@@ -19,8 +19,8 @@
                 scalar derivSpeedError = (speedError[i] - speedErrorLast) / dt;
 
                 // Saturate the integrated speed error based on pitch saturation.
-                float bladePitchSetpointSSC = superInfoFromSSC[i*nOutputsFromSSC+2] * degRad; // Converted to radians
-                //intSpeedError[i] = min(max(intSpeedError[i], superInfoFromSSC[i*nOutputsFromSSC+2]/(GK*PitchControlKI[j])), PitchMax[j]/(GK*PitchControlKI[j]));
+                float bladePitchSetpointSSC = superInfoFromSSC[i*nOutputsFromSSC+2+k] * degRad; // Converted to radians
+                //intSpeedError[i] = min(max(intSpeedError[i], superInfoFromSSC[i*nOutputsFromSSC+2+k]/(GK*PitchControlKI[j])), PitchMax[j]/(GK*PitchControlKI[j]));
                 intSpeedError[i] = min(max(intSpeedError[i], bladePitchSetpointSSC/(GK*PitchControlKI[j])), PitchMax[j]/(GK*PitchControlKI[j]));
 
                 // Compute the pitch components from the proportional, integral,

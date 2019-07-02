@@ -2,7 +2,7 @@
             if (pastFirstTimeStep)
             {
                 // Set the gain scheduling variable.
-                GK = 1.0 / (1.0 + (bladePitch[i]*degRad)/PitchK[j]);
+                GK = 1.0 / (1.0 + (bladePitch[i][k]*degRad)/PitchK[j]);
 
                 // Store the old value of speed error.
                 scalar speedErrorLast = speedError[i];
@@ -36,7 +36,7 @@
                 // set integrated speed error such that if there is no speed error
                 // on the first real control step (see the else section below), there
                 // will not be a change in pitch.
-                GK = 1.0 / (1.0 + (bladePitch[i]*degRad)/PitchK[j]);
-                intSpeedError[i] = (bladePitch[i]*degRad) / (GK * PitchControlKI[j]);
+                GK = 1.0 / (1.0 + (bladePitch[i][k]*degRad)/PitchK[j]);
+                intSpeedError[i] = (bladePitch[i][k]*degRad) / (GK * PitchControlKI[j]);
             }
 
